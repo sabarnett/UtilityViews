@@ -32,6 +32,10 @@ struct TestBaseView: View {
                     NavigationLink(destination: {
                         TextEditTestView()
                     }, label: {Text("Text Edit Views")})
+
+                    NavigationLink(destination: {
+                        ImagePickerTestView()
+                    }, label: {Text("Image Picker")})
                 }
             }
             .navigationTitle("UtilityViews Tests")

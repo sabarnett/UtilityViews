@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8516BFB29BF674500EBE0F7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8516BFA29BF674500EBE0F7 /* ImagePicker.swift */; };
 		E863488F2995378A00B67D09 /* FloatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863488E2995378A00B67D09 /* FloatingTextView.swift */; };
 		E8A79786297405E700E5E9BB /* TextEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A79785297405E700E5E9BB /* TextEdit.swift */; };
 		E8A797892974066300E5E9BB /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A797882974066300E5E9BB /* XDismissButton.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E8516BFA29BF674500EBE0F7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E863488E2995378A00B67D09 /* FloatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextView.swift; sourceTree = "<group>"; };
 		E8A79785297405E700E5E9BB /* TextEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEdit.swift; sourceTree = "<group>"; };
 		E8A797882974066300E5E9BB /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E8516BF929BF673500EBE0F7 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				E8516BFA29BF674500EBE0F7 /* ImagePicker.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
 		E8A79784297405D700E5E9BB /* TextEdit */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +102,7 @@
 		E8BC9CB4296DAED70073F413 /* UtilityViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8516BF929BF673500EBE0F7 /* ImagePicker */,
 				E8D5CE982987F90700531B21 /* Helpers */,
 				E8C12214297C3D0B00FCDF40 /* Extensions */,
 				E8C1220C297C3A8D00FCDF40 /* DateTime */,
@@ -257,6 +268,7 @@
 				E8C1220E297C3AB500FCDF40 /* DateTimePicker.swift in Sources */,
 				E8C443EE297732BB00BC3118 /* PickerPopup.swift in Sources */,
 				E8A797892974066300E5E9BB /* XDismissButton.swift in Sources */,
+				E8516BFB29BF674500EBE0F7 /* ImagePicker.swift in Sources */,
 				E8C12210297C3AE100FCDF40 /* DateTimePopup.swift in Sources */,
 				E863488F2995378A00B67D09 /* FloatingTextView.swift in Sources */,
 			);
