@@ -30,7 +30,14 @@ open class PickerOption: Identifiable, Hashable {
     public var image: UIImage?
     public var title: String
     public var subTitle: String
-
+    
+    /// Defines the attributes of an item in the picker. This defines the three items we need in order to display
+    /// an item, the title text, a sub-title and an image.
+    ///
+    /// - Parameters:
+    ///   - image: The image to display in th epicker line
+    ///   - title: The title of the item
+    ///   - subTitle: A sub-title for the item to give additional context.
     public init(image: UIImage? = nil, title: String, subTitle: String) {
         self.id = UUID()
         self.image = image

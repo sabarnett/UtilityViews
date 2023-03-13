@@ -41,7 +41,15 @@ public struct PickerPopup: View {
 
     @Binding public var selectedOption: PickerOption?
     @Binding public var showPopup: Bool
-
+    
+    /// Displays the picker popup.
+    ///
+    /// - Parameters:
+    ///   - pickerOptions: An array of `PickerOption` items to be displayed in the list.
+    ///   - prompt: A prompt to the user to provide context. The prompt can be ommitted.
+    ///   - selectedOption: A binding to a `PickerOption` to save the selected item to.
+    ///   - showPopup: A binding to the Bool that triggered the display of the list. When an item in
+    ///                 the list is tapped, this will be togged to false.
     public init(pickerOptions: [PickerOption],
                 prompt: String? = nil,
                 selectedOption: Binding<PickerOption?>,

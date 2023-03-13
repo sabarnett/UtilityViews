@@ -38,7 +38,14 @@ public struct PickerPopupButton: View {
 
     public var selectedItem: PickerOption
     @Binding public var showPicker: Bool
-
+    
+    /// Displays a 'button' that can be used to toggle the display of the picker selection view. The button is
+    /// passed the `PickerOption` to be displayed and a binding to a boolean that is used to trigger
+    /// the display of the picker popup in the parent code.
+    ///
+    /// - Parameters:
+    ///   - selectedItem: The item to ne displayed
+    ///   - showPicker: A binding to a bool. Will be set to true if the user taps the displayed item.
     public init(selectedItem: PickerOption, showPicker: Binding<Bool>) {
         self.selectedItem = selectedItem
         self._showPicker = showPicker

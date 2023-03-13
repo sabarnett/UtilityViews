@@ -9,7 +9,7 @@
 import SwiftUI
 
 /**
- Defines the layout of an individual picker option.
+ Defines the layout of an individual picker option in th elist of items.
  */
 public struct PopupItem: View {
 
@@ -19,7 +19,10 @@ public struct PopupItem: View {
     /// The content to be displayed. This is a PickerOption containing an UIImage,
     /// Title and Sub-Title
     public var option: PickerOption
-
+    
+    /// Defines the layout of an individual item in the list of selectable items.
+    ///
+    /// - Parameter option: An inistance of `PickerOption` to be displayed.
     public init(option: PickerOption) {
         self.option = option
     }
