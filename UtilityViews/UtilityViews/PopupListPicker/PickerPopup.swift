@@ -12,6 +12,8 @@ import SwiftUI
   Displays a popup window containing a list to select from. Each item will have a leading
    image followed by a title and sub-title.
  
+ ![Popup List Picker](PopupListPicker.png)
+ 
   Usage scenario:
  
  ````

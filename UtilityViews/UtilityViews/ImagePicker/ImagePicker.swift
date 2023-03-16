@@ -8,6 +8,39 @@
         
 import SwiftUI
 
+/**
+ The image picker allows the user to select an image from their photos library or to take a picture with the camera.
+ 
+ ![Image Picker](ImagePicker.png)
+ 
+Depending on the `sourceType` you can elect to use an existing picture on the device or to take a new
+ picture using the devices camera.
+ 
+ Usage scenario:
+
+````
+ @State private var selectedImage: UIImage = UIImage()
+ @State private var showSelector: Bool = false
+ 
+ var body: some View {
+     VStack {
+         if let selectedImage {
+         Image(uiImage: selectedImage)
+                 .resizable()
+                 .aspectRatio(contentMode: .fit)
+                 .frame(width: 250, height: 250)
+         }
+
+         Button("Select Image") { showSelector.toggle() }
+     }
+     .padding()
+     .sheet(isPresented: $showSelector) {
+         ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+     }
+     
+ }
+````
+ */
 public struct ImagePicker: UIViewControllerRepresentable {
     
     @Environment(\.dismiss) private var dismiss
