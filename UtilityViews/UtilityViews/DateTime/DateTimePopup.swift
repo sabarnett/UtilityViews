@@ -57,6 +57,9 @@ public struct DateTimePopup: View {
     ///              todays date minus 10 years.
     ///   - maxDate: Sets the maximum allowable date that can be selected. If not set, it will default to the
     ///             current date/time = 24 hours.
+    ///   - showTimePicker: Indicates whether you want the time picker displayed or not. By default, the
+    ///   time picker will be displayed.
+    ///   
     public init(selectedDate: Binding<Date?>,
                 showPopup: Binding<Bool>,
                 minDate: Date? = nil,

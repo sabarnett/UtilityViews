@@ -50,6 +50,9 @@ public struct DateTimePickerButton: View {
     ///   - label: The label to be displayed. This should indicate to the user what the date time represents.
     ///   - dateTime: A bound Date variable that provides the initial value and receives the selected date and time.
     ///   - showPicker: A bound Bool that is toggled when the user taps the component.
+    ///   - showTimeComponent: Indicates whether you want the time displayed or not. By default, the
+    ///   time will be displayed.
+    ///
     public init(label: String, dateTime: Binding<Date?>, showPicker: Binding<Bool>, showTimeComponent: Bool = true) {
         self.showTimeComponent = showTimeComponent
         self.label = label
