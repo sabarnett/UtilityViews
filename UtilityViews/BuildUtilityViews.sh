@@ -1,3 +1,5 @@
+xcodebuild clean -scheme UtilityViews -quiet
+
 echo '*** Delete the iphone archive and rebuild'
 rm -r './build/UtilityViews.framework-iphoneos.xcarchive'
 
@@ -15,7 +17,7 @@ xcodebuild archive \
 -archivePath './build/UtilityViews.framework-iphoneos.xcarchive' \
 -quiet \
 SKIP_INSTALL=NO \
-BUILD_LIBRARIES_FOR_DISTRIBUTION=YES 
+BUILD_LIBRARY_FOR_DISTRIBUTION=YES 
 
 echo '*** Delete iphone simulator archive and rebuild'
 rm -r './build/UtilityViews.framework-iphonesimulator.xcarchive'
@@ -34,10 +36,11 @@ xcodebuild archive \
 -archivePath './build/UtilityViews.framework-iphonesimulator.xcarchive' \
 -quiet \
 SKIP_INSTALL=NO \
-BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
 echo '*** Delete xcframework and rebuild'
 rm -r './build/UtilityViews.xcframework'
+
 xcodebuild -create-xcframework \
 -framework './build/UtilityViews.framework-iphoneos.xcarchive/Products/Library/Frameworks/UtilityViews.framework' \
 -framework './build/UtilityViews.framework-iphonesimulator.xcarchive/Products/Library/Frameworks/UtilityViews.framework' \
