@@ -47,6 +47,7 @@ public struct DateTimePopup: View {
     private var minDate: Date?
     private var maxDate: Date?
     private var showTimePicker: Bool
+    private var allowClear: Bool
 
     /// Initialise the DateTimePopup
     /// - Parameters:
@@ -59,20 +60,22 @@ public struct DateTimePopup: View {
     ///             current date/time = 24 hours.
     ///   - showTimePicker: Indicates whether you want the time picker displayed or not. By default, the
     ///   time picker will be displayed.
+    ///   - allowClear: Indicates that the user should bebale to clear the date and time. If enabled a clear
+    ///   button will be displayed. If pressed, the selected date is set to nil and the popup is closed.
     ///   
     public init(selectedDate: Binding<Date?>,
                 showPopup: Binding<Bool>,
                 minDate: Date? = nil,
                 maxDate: Date? = nil,
-                showTimePicker: Bool = true) {
+                showTimePicker: Bool = true,
+                allowClear: Bool = true) {
         self.showTimePicker = showTimePicker
         self.minDate = minDate
         self.maxDate = maxDate
+        self.allowClear = allowClear
 
         self._selectedDate = selectedDate
         self._showPopup = showPopup
-
-        print("init: Show Time Picker: \(self.showTimePicker)")
     }
 
     public var body: some View {
@@ -86,6 +89,17 @@ public struct DateTimePopup: View {
                                 showPopup = false
                             }
                         }.padding()
+                        
+                        if allowClear {
+                            Spacer()
+                            Button("Clear") {
+                                selectedDate = nil
+                                withAnimation {
+                                    showPopup = false
+                                }
+                            }.padding()
+                        }
+                        
                         Spacer()
                         Button("Cancel") {
                             withAnimation {

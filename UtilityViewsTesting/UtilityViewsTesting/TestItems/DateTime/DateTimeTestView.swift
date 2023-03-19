@@ -13,9 +13,11 @@ struct DateTimeTestView: View {
 
     @State private var dateOnly: Date?
     @State private var showDateOnly: Bool = false
+    @State private var dateNoClear: Date?
 
     @State private var dateTime: Date?
     @State private var showDateTime: Bool = false
+    @State private var showNoClear: Bool = false
 
     var body: some View {
         ZStack {
@@ -30,6 +32,10 @@ struct DateTimeTestView: View {
                 DateTimePickerButton(label: "Date & Time",
                                      dateTime: $dateTime,
                                      showPicker: $showDateTime)
+
+                DateTimePickerButton(label: "Date & Time No Clear",
+                                     dateTime: $dateNoClear,
+                                     showPicker: $showNoClear)
                 Spacer()
             }
             .padding()
@@ -46,6 +52,12 @@ struct DateTimeTestView: View {
                 DateTimePopup(selectedDate: $dateTime,
                               showPopup: $showDateTime)
                 .transition(.scale)
+            }
+            
+            if showNoClear {
+                DateTimePopup(selectedDate: $dateNoClear,
+                              showPopup: $showNoClear,
+                              allowClear: false)
             }
         }
     }
