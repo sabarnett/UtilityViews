@@ -157,8 +157,6 @@ public struct DateTimePopup: View {
     }
 
     func displayComponents() -> DatePicker.Components {
-        print("(displayComponents) Show Time Picker: \(self.showTimePicker)")
-
         return showTimePicker
             ? [.date, .hourAndMinute]
             : [.date]
