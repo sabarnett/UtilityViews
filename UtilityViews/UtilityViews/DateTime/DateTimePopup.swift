@@ -113,7 +113,11 @@ public struct DateTimePopup: View {
             if let defaultDate = selectedDate {
                 selDate = defaultDate
             } else {
-                selDate = Date()
+                if let minDate {
+                    selDate = minDate
+                } else {
+                    selDate = Date()
+                }
             }
         }
     }
