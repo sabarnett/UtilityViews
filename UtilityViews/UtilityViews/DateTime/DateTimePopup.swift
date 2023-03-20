@@ -54,10 +54,8 @@ public struct DateTimePopup: View {
     ///   - selectedDate: A bound Date variable that provides the initial value and where
     ///                 the updated value will be stored.
     ///   - showPopup: A bound Bool that will be toggled when the user selects a date ot cancells the popup.
-    ///   - minDate: The minimum allowed date and time that can be entered. If not set, it will default to
-    ///              todays date minus 10 years.
-    ///   - maxDate: Sets the maximum allowable date that can be selected. If not set, it will default to the
-    ///             current date/time = 24 hours.
+    ///   - minDate: The minimum allowed date and time that can be entered. If not set,
+    ///   - maxDate: Sets the maximum allowable date that can be selected.
     ///   - showTimePicker: Indicates whether you want the time picker displayed or not. By default, the
     ///   time picker will be displayed.
     ///   - allowClear: Indicates that the user should bebale to clear the date and time. If enabled a clear
@@ -83,29 +81,15 @@ public struct DateTimePopup: View {
             VStack {
                 VStack {
                     HStack {
-                        Button("Select") {
-                            selectedDate = selDate
-                            withAnimation {
-                                showPopup = false
-                            }
-                        }.padding()
+                        selectButton()
                         
                         if allowClear {
                             Spacer()
-                            Button("Clear") {
-                                selectedDate = nil
-                                withAnimation {
-                                    showPopup = false
-                                }
-                            }.padding()
+                            clearButton()
                         }
                         
                         Spacer()
-                        Button("Cancel") {
-                            withAnimation {
-                                showPopup = false
-                            }
-                        }.padding()
+                        cancelButton()
                     }
                     .background(Color(.darkGray))
                     .foregroundColor(.white)
@@ -134,29 +118,40 @@ public struct DateTimePopup: View {
         }
     }
 
-    func dateRange() -> ClosedRange<Date> {
-        let calendar = Calendar.current
+    fileprivate func selectButton() -> some View {
+        return Button("Select") {
+            selectedDate = selDate
+            withAnimation {
+                showPopup = false
+            }
+        }.padding()
+    }
+    
+    fileprivate func cancelButton() -> some View {
+        return Button("Cancel") {
+            withAnimation {
+                showPopup = false
+            }
+        }.padding()
+    }
+    
+    fileprivate func clearButton() -> some View {
+        return Button("Clear") {
+            selectedDate = nil
+            withAnimation {
+                showPopup = false
+            }
+        }.padding()
+    }
 
-        // Start date - minimum date or 10 years ago
-        let yearComp = DateComponents(year: -10)
-        var startDate = calendar.date(byAdding: yearComp, to: Date())!
-
-        if let minDate {
-            startDate = minDate
-        }
-
-        // Make some allowance on end date - allow up to 24 hours past 'now' so we can log
-        // a date in the near future. That lets the user set a take-off date before they
-        // take off.
-        var endDate = calendar.date(byAdding: DateComponents(day: 1), to: Date())!
-        if let maxDate {
-            endDate = maxDate
-        }
+    fileprivate func dateRange() -> ClosedRange<Date> {
+        let startDate = minDate != nil ? minDate! : Date.distantPast
+        let endDate = maxDate != nil ? maxDate! : Date.distantFuture
 
         return startDate...endDate
     }
 
-    func displayComponents() -> DatePicker.Components {
+    fileprivate func displayComponents() -> DatePicker.Components {
         return showTimePicker
             ? [.date, .hourAndMinute]
             : [.date]
