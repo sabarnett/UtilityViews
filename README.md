@@ -2,6 +2,12 @@
 
 UtilityViews is a framework of useful and commonly used views. 
 
+**This is a work in progress - it is being developed along side a somewhat larger project** - I only intend
+to push code that works with my app, but the interface _may_ change. I'm trying to ensure that there are no breaking changes as I go along, but cannot make any guarantees.
+
+I have included developer documentation in the source that shows how to use the components and every
+Component has a corresponding test view in the test app. 
+
 ## Overview
 
 There are many views that appear in a number of apps where it makes sense to make them generic and reuse
