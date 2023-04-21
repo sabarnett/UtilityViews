@@ -16,12 +16,10 @@ struct ImagePickerTestView: View {
     
     var body: some View {
         VStack {
-            if let selectedImage {
             Image(uiImage: selectedImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 250)
-            }
 
             Button("Select Image") { showSelector.toggle() }
         }
