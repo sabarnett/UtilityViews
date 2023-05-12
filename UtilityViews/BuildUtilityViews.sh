@@ -1,4 +1,5 @@
-xcodebuild clean -scheme UtilityViews -quiet
+xcodebuild clean -scheme UtilityViews -destination 'generic/platform=iOS' -quiet
+xcodebuild clean -scheme UtilityViews -destination 'generic/platform=iOS Simulator' -quiet
 
 echo '*** Delete the iphone archive and rebuild'
 rm -r './build/UtilityViews.framework-iphoneos.xcarchive'
