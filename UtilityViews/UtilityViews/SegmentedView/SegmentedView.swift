@@ -13,6 +13,45 @@ public enum SegmentedViewStyle {
     case underline
 }
 
+/**
+ The SegmentedView presents a list of options to the user as a scrollable, horizontal, list of strings. The
+ user can tap on one of the options to select it.
+ 
+ The segmented view comes in two styles; Underline and Pill. The style used is determined by the
+ SegmentedViewStyle.
+ 
+ Underline presents the list with an underline below the currently selected item:
+ 
+ ![Underline Style](SegmentedView_Underline.png)
+ 
+ There are options to set the underline and selected item text colours as well as the background colour.
+ 
+ The Pill style presents the list with the currently selected item highlighted with a background
+ pill shape:
+ 
+ ![Pill Style](SegmentedView_Pill.png)
+ 
+There are options to select the colour of the background and the pill colours
+ 
+ Usage scenario:
+
+````
+ let items = ["Details", "Pilot", "Pre-flight",
+              "Flight", "Post-Flight", "Notes",
+              "Help", ">20Kg"]
+
+ @State private var selectedSegment: String = ""
+ 
+ ...
+ 
+ SegmentedView(segments: items,
+               showBackground: false,
+               segmentStyle: .underline,
+               underlineColor: Color(.systemGreen),
+               underlineTextColor: Color(.systemGreen),
+               selected: $selectedSegment)
+````
+ */
 public struct SegmentedView: View {
     private var segments: [String]
     private var showBackground: Bool
@@ -23,7 +62,16 @@ public struct SegmentedView: View {
     @Binding public var selected: String
 
     @Namespace var name
-
+    
+    /// Initialises an instance of the SegmentedView
+    ///
+    /// - Parameters:
+    ///   - segments: Specifies an array of strings to be presented asthe individual options.
+    ///   - showBackground: Bool indicating whether the background colour should be shown (true)
+    ///   - segmentStyle: The style of the view - Underline or Pill
+    ///   - underlineColor: The coloour of the selected underline bar (.systemGreen)
+    ///   - underlineTextColor: The colour of the selected text item (.systemGreen)
+    ///   - selected: A binding to a string value containing the currently selected item
     public init(
         segments: [String],
         showBackground: Bool = true,
