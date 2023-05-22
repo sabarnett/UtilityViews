@@ -16,6 +16,7 @@
 		E82BD83629BA1EB6001BA879 /* TestBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82BD83529BA1EB6001BA879 /* TestBaseView.swift */; };
 		E82BD83829BA1EB7001BA879 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E82BD83729BA1EB7001BA879 /* Assets.xcassets */; };
 		E82BD83B29BA1EB7001BA879 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E82BD83A29BA1EB7001BA879 /* Preview Assets.xcassets */; };
+		E840F3642A1BB9BB00E2DD4C /* SegmentedViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840F3632A1BB9BB00E2DD4C /* SegmentedViewTest.swift */; };
 		E8516BFE29BF686100EBE0F7 /* ImagePickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8516BFD29BF686100EBE0F7 /* ImagePickerTestView.swift */; };
 		E8BD318D29C346EA00A233B0 /* PopupListPickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD318C29C346EA00A233B0 /* PopupListPickerTestView.swift */; };
 		E8DD633729BF409900EFB7F6 /* UtilityViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8DD633629BF409900EFB7F6 /* UtilityViews.framework */; };
@@ -48,6 +49,7 @@
 		E82BD83529BA1EB6001BA879 /* TestBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseView.swift; sourceTree = "<group>"; };
 		E82BD83729BA1EB7001BA879 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E82BD83A29BA1EB7001BA879 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E840F3632A1BB9BB00E2DD4C /* SegmentedViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedViewTest.swift; sourceTree = "<group>"; };
 		E8516BFD29BF686100EBE0F7 /* ImagePickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerTestView.swift; sourceTree = "<group>"; };
 		E8BD318C29C346EA00A233B0 /* PopupListPickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupListPickerTestView.swift; sourceTree = "<group>"; };
 		E8DD633629BF409900EFB7F6 /* UtilityViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UtilityViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 		E819FD5929BA1FFD0098338B /* TestItems */ = {
 			isa = PBXGroup;
 			children = (
+				E840F3602A1BB97C00E2DD4C /* SegmentedView */,
 				E8516BFC29BF685200EBE0F7 /* ImagePicker */,
 				E819FD5F29BA24540098338B /* Helpers */,
 				E8FEAF7929BBBA2A0013C86B /* DateTime */,
@@ -140,6 +143,14 @@
 				E8DD633629BF409900EFB7F6 /* UtilityViews.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E840F3602A1BB97C00E2DD4C /* SegmentedView */ = {
+			isa = PBXGroup;
+			children = (
+				E840F3632A1BB9BB00E2DD4C /* SegmentedViewTest.swift */,
+			);
+			path = SegmentedView;
 			sourceTree = "<group>";
 		};
 		E8516BFC29BF685200EBE0F7 /* ImagePicker */ = {
@@ -271,6 +282,7 @@
 				E819FD5E29BA20C80098338B /* XDismissButtonModalView.swift in Sources */,
 				E819FD5C29BA202D0098338B /* XDismissButtonView.swift in Sources */,
 				E8BD318D29C346EA00A233B0 /* PopupListPickerTestView.swift in Sources */,
+				E840F3642A1BB9BB00E2DD4C /* SegmentedViewTest.swift in Sources */,
 				E8516BFE29BF686100EBE0F7 /* ImagePickerTestView.swift in Sources */,
 				E82BD83629BA1EB6001BA879 /* TestBaseView.swift in Sources */,
 				E82BD83429BA1EB6001BA879 /* UtilityViewsTestingApp.swift in Sources */,
