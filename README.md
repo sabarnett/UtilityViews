@@ -97,3 +97,29 @@ three items;
 These are reflected in the button, so the user can always see what the current selection is.
 
 ![Popup List Picker](UtilityViews/UtilityViews/UtilityViews.docc/Resources/PopupListPicker.png)
+
+## Updates 
+
+This framework was always intended to grow, and it has. This section shows any updates since the initial version was created.
+
+### segmentedView
+
+  started out with a multi-page input form which I wrapped in a 
+ ScrollView to the user could scroll between pages. It worked Ok, but
+ was less than intuitive. I needed a better way to indicate to the user that there
+ were multiple pages and to give them a more intuitive way to access them. The
+ SegmentedView was the result.
+
+It comes in two variants. The first uses text with an underline to
+indicate the current item. When a new item is selected, the underline
+scrolls to the selected item giving the user some animation feedback.
+
+![Underline segmented view](UtilityViews/UtilityViews/UtilityViews.docc/Resources/SegmentedView_Underline.png)
+
+The second is a more traditional pill style. When an item is selected
+it is highlighted with a background pill shape and the surrounding items are moved
+slight further away. This gives the user a minimal and subtle indication that
+the selection has changed.
+
+![Pill segmented view](UtilityViews/UtilityViews/UtilityViews.docc/Resources/SegmentedView_Pill.png)
+
