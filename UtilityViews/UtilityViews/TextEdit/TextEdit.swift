@@ -63,11 +63,10 @@ public struct TextEdit: View {
             VStack {
                 Text(placeholder)
                     .font(.body)
-                    .padding(.top, text.isEmpty ? 10 : 2)
                     .padding(.leading, 1)
-                    .foregroundColor(Color(.placeholderText))
-                    .offset(y: text.isEmpty ? 0 : -0.85)
-                    .scaleEffect(text.isEmpty ? 1 : 0.7, anchor: .leading)
+                    .foregroundColor(text.isEmpty ? .primary : .primary.opacity(0.75))
+                    .offset(y: text.isEmpty ? 12.5 : -0.85)
+                    .scaleEffect(text.isEmpty ? 1 : 0.65, anchor: .leading)
                     .animation(.spring(response: 0.2, dampingFraction: 0.5), value: text)
                 Spacer()
             }

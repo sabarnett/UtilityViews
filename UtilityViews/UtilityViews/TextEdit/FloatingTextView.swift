@@ -50,7 +50,7 @@ public struct FloatingTextView: View {
     public var body: some View {
         ZStack(alignment: .leading) {
             Text(title)
-                .foregroundColor(Color(.placeholderText))
+                .foregroundColor(.primary.opacity(0.65))
                 .offset(y: text.isEmpty ? 0 : -25)
                 .scaleEffect(text.isEmpty ? 1 : 0.8, anchor: .leading)
             TextField("", text: $text)
