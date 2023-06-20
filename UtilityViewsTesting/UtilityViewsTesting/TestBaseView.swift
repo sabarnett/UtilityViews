@@ -44,6 +44,10 @@ struct TestBaseView: View {
                     NavigationLink(destination: {
                         SegmentedViewTest()
                     }, label: {Text("Segmented View")})
+                    
+                    NavigationLink(destination: {
+                        PDFViewerTestView()
+                    }, label: {Text("PDF Viewer")})
                 }
             }
             .navigationTitle("UtilityViews Tests")
