@@ -34,7 +34,9 @@ struct PDFViewUI: UIViewRepresentable {
 
     func updateUIView(_ pdfView: UIViewType, context: Context) {
         if let data {
-            pdfView.document = PDFDocument(data: data)
+            DispatchQueue.main.async {
+                pdfView.document = PDFDocument(data: data)
+            }
         }
     }
 }
