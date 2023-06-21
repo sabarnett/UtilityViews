@@ -36,11 +36,9 @@ import SwiftUI
      }
  }
 ````
- 
  */
 public struct PDFViewer: View {
 
-    @Environment(\.colorScheme) private var colorScheme
     private var pdfData: Data?
     @State private var showShareSheet: Bool = false
     
@@ -54,25 +52,18 @@ public struct PDFViewer: View {
     public var body: some View {
         VStack {
             PDFViewUI(data: pdfData, autoScales: true)
-                .overlay(content: {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                showShareSheet = true
-                            }, label: {
-                                Image(systemName: "square.and.arrow.up")
-                                    .scaleEffect(1)
-                                    .frame(width: 40, height: 40)
-                                    .foregroundColor(colorScheme == .light ? .black : .white)
-                                    .background(colorScheme == .light ? .white : .black)
-                                    .clipShape(Circle())
-                            })
-                            .padding(10)
-                        }
-                        Spacer()
-                    }
-                })
+                .overlay(
+                    Button(action: {
+                        showShareSheet = true
+                    }, label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .scaleEffect(1)
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.white)
+                            .background(.black)
+                            .clipShape(Circle())
+                    }).offset(x: -10, y: 10),
+                    alignment: .topTrailing)
         }
 
         .sheet(isPresented: $showShareSheet) {
