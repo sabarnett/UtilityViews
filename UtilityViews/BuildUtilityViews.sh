@@ -1,48 +1,83 @@
-xcodebuild clean -scheme UtilityViews -destination 'generic/platform=iOS' -quiet
-xcodebuild clean -scheme UtilityViews -destination 'generic/platform=iOS Simulator' -quiet
+#!/bin/zsh
+setopt NOGLOB
 
-echo '*** Delete the iphone archive and rebuild'
-rm -r './build/UtilityViews.framework-iphoneos.xcarchive'
+cd "/Users/stevenbarnett/Documents/Code Files/Apps/Frameworks/UtilityViews/UtilityViews/"
 
-echo 'Build the documentation'
-xcodebuild docbuild \
--scheme UtilityViews \
--destination 'generic/platform=iOS' \
--quiet
+scheme="UtilityViews"
 
-echo 'Build the framework'
-xcodebuild archive \
--scheme UtilityViews \
--configuration Release \
--destination 'generic/platform=iOS' \
--archivePath './build/UtilityViews.framework-iphoneos.xcarchive' \
--quiet \
-SKIP_INSTALL=NO \
-BUILD_LIBRARY_FOR_DISTRIBUTION=YES 
+destinations=("generic/platform=iOS" 
+			  "generic/platform=iOS Simulator")
+			  
+archives=("./build/$scheme.framework-iphoneos.xcarchive" 
+		  "./build/$scheme.framework-iphonesimulator.xcarchive")
 
-echo '*** Delete iphone simulator archive and rebuild'
-rm -r './build/UtilityViews.framework-iphonesimulator.xcarchive'
+frameworks=("./build/$scheme.framework-iphoneos.xcarchive/Products/Library/Frameworks/$scheme.framework"
+			"./build/$scheme.framework-iphonesimulator.xcarchive/Products/Library/Frameworks/$scheme.framework")
 
-echo 'Build the documentation'
-xcodebuild docbuild \
--scheme UtilityViews \
--destination 'generic/platform=iOS Simulator' \
--quiet
+xcframework="./build/$scheme.xcframework"
 
-echo 'Build the framework'
-xcodebuild archive \
--scheme UtilityViews \
--configuration Release \
--destination 'generic/platform=iOS Simulator' \
--archivePath './build/UtilityViews.framework-iphonesimulator.xcarchive' \
--quiet \
-SKIP_INSTALL=NO \
-BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+# ----------------------------------------------------------------------
+#
+# This is the build process. It is driven by the above variables
+#
+# ----------------------------------------------------------------------
 
+length=${#destinations[@]}
+for (( ix=1; ix<=length; ix++ ));
+do
+   #
+   # Clean the target project and remove any previously generated archive
+   #
+   echo "Clean ${destinations[$ix]}"
+   xcodebuild clean \
+   -scheme $scheme \
+   -destination "${destinations[$ix]}" \
+   -configuration Debug \
+   -quiet
+
+   rm -r "${archives[$ix]}"
+   
+   #
+   # Rebuild the framework first
+   #
+   echo "Build the framework for ${destinations[$ix]}"
+
+   xcodebuild archive \
+   -scheme $scheme \
+   -configuration Release \
+   -destination "${destinations[$ix]}" \
+   -archivePath "${archives[$ix]}" \
+   -quiet \
+   SKIP_INSTALL=NO \
+   BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+
+   #
+   # Then rebuild the documentation
+   #
+   echo "Build documentation for ${destinations[$ix]}"
+
+   xcodebuild docbuild \
+   -scheme $scheme \
+   -destination "${destinations[$ix]}" \
+   -quiet
+
+done
+
+#
+# Now that the framework archives have been built, create the xcframework
+#
+# Note, we are building a parameter list for xcodebuild and the parameters will
+# contain spaces. So, we cannot use string concatenation or zsh will surround the
+# resulting string with quotes. The only legitimate way to get round this is to
+# build an array of  command line options and unwrap that.
 echo '*** Delete xcframework and rebuild'
-rm -r './build/UtilityViews.xcframework'
+rm -r "${xcframework}"
 
-xcodebuild -create-xcframework \
--framework './build/UtilityViews.framework-iphoneos.xcarchive/Products/Library/Frameworks/UtilityViews.framework' \
--framework './build/UtilityViews.framework-iphonesimulator.xcarchive/Products/Library/Frameworks/UtilityViews.framework' \
--output './build/UtilityViews.xcframework'
+params=("-create-xcframework")
+for fwk in "${frameworks[@]}"
+do
+	params+=("-framework" "${fwk}")
+done
+params+=("-output" "${xcframework}")
+
+xcodebuild ${params[@]}
