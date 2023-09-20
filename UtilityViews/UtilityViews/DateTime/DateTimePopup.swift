@@ -98,7 +98,7 @@ public struct DateTimePopup: View {
                                selection: $selDate,
                                in: dateRange(),
                                displayedComponents: displayComponents())
-                    .datePickerStyle(.graphical)   //(GraphicalDatePickerStyle())
+                    .datePickerStyle(.graphical)
                         .padding()
                 }
                 .background(Color(.secondarySystemBackground))

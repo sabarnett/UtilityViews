@@ -52,13 +52,17 @@ public struct CheckBoxView: View {
 
     public var body: some View {
         HStack {
-            direction == .leftToRight
-                ? AnyView(Text(caption))
-                : AnyView(Image(systemName: checkIcon()))
+            if direction == .leftToRight {
+                AnyView(Text(caption))
+            } else {
+                AnyView(Image(systemName: checkIcon()))
+            }
             Spacer()
-            direction == .leftToRight
-                ? AnyView(Image(systemName: checkIcon()))
-                : AnyView(Text(caption))
+            if direction == .leftToRight {
+                AnyView(Image(systemName: checkIcon()))
+            } else {
+                AnyView(Text(caption))
+            }
         }.foregroundColor(textColour())
     }
 
